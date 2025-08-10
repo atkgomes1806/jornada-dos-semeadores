@@ -44,10 +44,15 @@ Cada carta contém:
 
 ## 📂 Estrutura de pastas
 📁 jornada-dos-semeadores
+
 ┣ 📂 assets # Arquivos estáticos (imagens, ícones, fontes)
+
 ┣ 📂 css # Arquivos de estilo
+
 ┣ 📂 js # Scripts e lógica do projeto
+
 ┣ 📄 index.html # Página inicial
+
 ┗ 📄 README.md # Documentação do projeto
 
 ---
