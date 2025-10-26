@@ -1,4 +1,14 @@
-/* Utility: escape simples para evitar injeção de HTML ao montar templates */
+/*
+========================================
+  UTILITÁRIOS
+========================================
+*/
+
+/**
+ * Escapa caracteres HTML de uma string para prevenir injeção de código.
+ * @param {string} str A string para escapar.
+ * @returns {string} A string segura para HTML.
+ */
 function escapeHtml(str) {
   if (str == null) return '';
   return String(str)
@@ -9,6 +19,18 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+/*
+========================================
+  RENDERIZAÇÃO
+========================================
+*/
+
+/**
+ * Gera o HTML para uma única carta.
+ * @param {object} carta - O objeto da carta.
+ * @param {string} [subtitulo] - Um subtítulo opcional para a carta (ex: "A Raiz").
+ * @returns {string} O HTML da carta.
+ */
 function cardHTML(carta, subtitulo) {
   const numero = escapeHtml(carta.numero);
   const nome = escapeHtml(carta.nome);
@@ -40,12 +62,28 @@ function cardHTML(carta, subtitulo) {
   `;
 }
 
+/**
+ * Renderiza uma lista de cartas no container principal.
+ * Usado na página "todas.html".
+ * @param {object[]} lista - A lista de cartas a ser renderizada.
+ */
 function renderCartas(lista) {
   const container = document.getElementById('container');
   if (!container) return;
   container.innerHTML = lista.map(carta => cardHTML(carta)).join('');
 }
 
+/*
+========================================
+  LÓGICA DO SORTEIO
+========================================
+*/
+
+/**
+ * Realiza o sorteio das cartas com base nas categorias escolhidas,
+ * atualiza o histórico para evitar repetições e renderiza o resultado.
+ * @param {string[]} categorias - As categorias selecionadas pelo usuário.
+ */
 function realizarSorteio(categorias) {
   const HISTORICO_KEY = 'historico_cartas';
   const NUMERO_DE_SORTEIOS_BLOQUEADOS = 2;
@@ -105,6 +143,16 @@ function realizarSorteio(categorias) {
   container.innerHTML = htmlFinal;
 }
 
+/*
+========================================
+  INICIALIZAÇÃO DA PÁGINA
+========================================
+*/
+
+/**
+ * Configura a página "lancar.html", inicializando o modal,
+ * os checkboxes e o formulário de seleção de categorias.
+ */
 function initLaunchPage() {
   const modal = document.getElementById('category-modal');
   const form = document.getElementById('category-form');
@@ -143,14 +191,26 @@ function initLaunchPage() {
   });
 }
 
-// --- INICIALIZAÇÃO --- 
+/*
+========================================
+  PONTO DE ENTRADA (ENTRY POINT)
+========================================
+*/
+
+// Executa quando o DOM está totalmente carregado.
 document.addEventListener('DOMContentLoaded', () => {
-  // Verifica se está na página de lançamento procurando pelo modal
+  // Verifica se está na página de lançamento procurando pelo modal.
   if (document.getElementById('category-modal')) {
     initLaunchPage();
   }
 });
 
-// --- FUNÇÕES GLOBAIS ---
-// Disponibiliza a função `renderCartas` globalmente para ser chamada pelo `onload` em `todas.html`
+/*
+========================================
+  EXPORTS GLOBAIS
+========================================
+*/
+
+// Disponibiliza a função `renderCartas` globalmente para ser chamada 
+// pelo atributo `onload` na página `todas.html`.
 window.renderCartas = renderCartas;
