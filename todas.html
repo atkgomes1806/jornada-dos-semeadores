@@ -5,17 +5,20 @@
   <title>Todas as Cartas</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <script src="cartas.js"></script>
-  <script src="script.js"></script>
 </head>
 <body onload="renderCartas(cartas)">
-  <a href="index.html" style="position:absolute;top:18px;left:18px;text-decoration:none;z-index:20;">
-    <span style="font-size:2rem;vertical-align:middle;">🏠</span>
+  <a href="index.html" class="home-link" aria-label="Voltar ao início">
+    <span class="home-icon">🏠</span>
   </a>
-  <h1 style="margin-left:40px;">Todas as Cartas</h1>
+  <h1 class="page-title">Todas as Cartas</h1>
   <div id="container"></div>
-  <br>
-  <a href="index.html"><button>Voltar ao início</button></a>
-  <a href="lancar.html"><button>Lançar para o universo</button></a>
+  
+  <div class="bottom-nav">
+    <a href="index.html"><button>Voltar ao início</button></a>
+    <a href="lancar.html"><button>Fazer uma leitura</button></a>
+  </div>
+
+  <script src="cartas.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
