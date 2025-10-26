@@ -2,11 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Lançar para o Universo</title>
+  <title>Sua Leitura de Cartas</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <script src="cartas.js"></script>
-  <script src="script.js"></script>
 </head>
 <body>
   <div id="category-modal" class="modal">
@@ -28,10 +26,18 @@
     </div>
   </div>
 
-  <h1>Lançamento para o Universo</h1>
+  <a href="index.html" class="home-link" aria-label="Voltar ao início">
+    <span class="home-icon">🏠</span>
+  </a>
+  <h1 class="page-title">Sua Leitura de Cartas</h1>
   <div id="container"></div>
-  <br>
-  <a href="index.html" class="home-icon-link"><button class="home-icon-button">🏠</button></a>
-  <a href="todas.html"><button>Ver todas as cartas</button></a>
+
+  <div class="bottom-nav">
+    <a href="index.html"><button>Voltar ao início</button></a>
+    <a href="todas.html"><button>Ver todas as cartas</button></a>
+  </div>
+  
+  <script src="cartas.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
