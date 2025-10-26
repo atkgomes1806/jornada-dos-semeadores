@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="home-page">
+  <!-- Container para a animação de partículas -->
+  <div id="tsparticles"></div>
+
   <div class="home-container">
     <h1>🌿 Cartas do Universo - Jornada dos Semeadores 🌿</h1>
     <p>Bem vindo(a) Semeador(a). Escolha seu caminho...</p>
@@ -15,5 +18,11 @@
       <a href="lancar.html"><button>Lançar para o universo</button></a>
     </div>
   </div>
+
+  <!-- Biblioteca tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  
+  <!-- Script de inicialização do efeito -->
+  <script src="effects.js"></script>
 </body>
 </html>
