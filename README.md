@@ -9,10 +9,10 @@ Bem-vindo(a) ao **Jornada dos Semeadores** — um projeto interativo que combina
 ## 📖 Sobre o projeto
 Este é um **site interativo** onde você pode:
 - 🌿 **Ver todas as cartas** da jornada.
-- 🎯 **"Lançar para o universo"** — onde 7 cartas são escolhidas aleatoriamente e exibidas em blocos (2, 3 e 4 cartas).
+- 🎯 **"Lançar para o universo"** — uma leitura de cartas personalizada onde você escolhe até 3 áreas da sua vida (como Autoconhecimento, Amor, Trabalho) e recebe uma tiragem de 3 cartas para cada área, representando "A Raiz", "O Desafio Atual" e "O Conselho".
 - 🔄 **Explorar cartas com efeito de "virar"**, mostrando frente e verso com descrições, virtudes e sombras.
 
-As cartas trazem mensagens e simbolismos que podem guiar reflexões e decisões, além de transmitir paz e tranquilidade na experiência.
+O projeto inclui uma tela de mentalização para focar suas intenções antes da leitura, e um sistema que evita a repetição de cartas em leituras recentes, tornando a experiência mais autêntica.
 
 ---
 
@@ -20,6 +20,7 @@ As cartas trazem mensagens e simbolismos que podem guiar reflexões e decisões,
 Cada carta contém:
 - **Número e Nome**
 - **Descrição**
+- **Imagem** (para o fundo da carta)
 - **Características**
 - **Virtudes** *(qualidades positivas)*
 - **Sombras** *(aspectos desafiadores)*
@@ -30,7 +31,8 @@ Cada carta contém:
 - **Interface simples e intuitiva** 🖥️
 - **Design clean e acolhedor** 🎨
 - **Animação de "flip" nas cartas** 🔄
-- **Seleção aleatória de cartas** para leitura/reflexão ✨
+- **Leitura de cartas personalizada** baseada em categorias ✨
+- **Tela de mentalização** para uma experiência mais imersiva 🙏
 
 ---
 
@@ -45,14 +47,18 @@ Cada carta contém:
 ## 📂 Estrutura de pastas
 📁 jornada-dos-semeadores
 
-┣ 📂 assets # Arquivos estáticos (imagens, ícones, fontes)
-
-┣ 📂 css # Arquivos de estilo
-
-┣ 📂 js # Scripts e lógica do projeto
-
-┣ 📄 index.html # Página inicial
-
+┣ 📂 assets
+┃ ┗ 📂 img # Imagens das cartas
+┣ 📂 css
+┃ ┗ 📄 style.css # Folha de estilos principal
+┣ 📂 js
+┃ ┣ 📄 cartas.js # Banco de dados com todas as cartas
+┃ ┣ 📄 effects.js # Efeito de partículas da home
+┃ ┣ 📄 nav.js # Lógica da navegação dinâmica
+┃ ┗ 📄 script.js # Lógica principal do sorteio e renderização
+┣  index.html # Página inicial
+┣ 📄 lancar.html # Página da leitura de cartas
+┣ 📄 todas.html # Página que exibe todas as cartas
 ┗ 📄 README.md # Documentação do projeto
 
 ---
@@ -60,4 +66,6 @@ Cada carta contém:
 ## 🎯 Como executar
 1. **Baixe ou clone** este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/jornada-dos-semeadores.git
+   git clone https://github.com/atkgomes1806/jornada-dos-semeadores.git
+   ```
+2. **Abra o arquivo `index.html`** em seu navegador de preferência.

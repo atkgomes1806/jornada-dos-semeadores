@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Sua Leitura de Cartas</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Botão de Alternância de Modo Escuro -->
+  <div id="dark-mode-toggle" class="dark-mode-toggle">
+    <span class="icon-sun">☀️</span>
+    <span class="icon-moon">🌙</span>
+  </div>
+
   <!-- Tela de Carregamento/Mentalização -->
   <div id="loading-overlay">
     <div class="loading-spinner"></div>
@@ -35,15 +41,11 @@
   <a href="index.html" class="home-link" aria-label="Voltar ao início">
     <span class="home-icon">🏠</span>
   </a>
-  <h1 class="page-title">Sua Leitura de Cartas</h1>
+  <!-- O título será inserido dinamicamente pelo script -->
   <div id="container"></div>
-
-  <div class="bottom-nav">
-    <a href="index.html"><button>Voltar ao início</button></a>
-    <a href="todas.html"><button>Ver todas as cartas</button></a>
-  </div>
   
-  <script src="cartas.js"></script>
-  <script src="script.js"></script>
+  <script src="js/cartas.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

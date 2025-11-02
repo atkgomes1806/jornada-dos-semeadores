@@ -106,6 +106,10 @@ function realizarSorteio(categorias) {
   const container = document.getElementById('container');
   if (!container) return;
 
+  // Insere o título da página dinamicamente
+  const tituloPagina = '<h1 class="page-title">Sua Leitura de Cartas</h1>';
+  container.insertAdjacentHTML('beforebegin', tituloPagina);
+
   let htmlFinal = '';
   const todosNumerosSorteados = [];
   const titulosCartas = ["A Raiz", "O Desafio Atual", "O Conselho"];
@@ -123,9 +127,9 @@ function realizarSorteio(categorias) {
         // Lógica da carta 11 (Dragão) adaptada para o novo contexto
         let cartaModificada = { ...carta };
         if (cartaModificada.numero === '11' && titulosCartas[i] === 'A Raiz') {
-            cartaModificada.imagem = 'img/11. dragão2.jpeg';
+            cartaModificada.imagem = 'assets/img/11. dragão2.jpeg';
         } else if (cartaModificada.numero === '11') {
-            cartaModificada.imagem = 'img/11. dragão.jpeg';
+            cartaModificada.imagem = 'assets/img/11. dragão.jpeg';
         }
         return cardHTML(cartaModificada, titulosCartas[i]);
     }).join('');
@@ -205,15 +209,113 @@ function initLaunchPage() {
 
 /*
 ========================================
+  CARTA DO DIA
+========================================
+*/
+
+/**
+ * Obtém a carta do dia. Verifica o localStorage para ver se uma carta já foi
+ * sorteada hoje. Se não, sorteia uma nova e a salva.
+ * @returns {object} O objeto da carta do dia.
+ */
+function getCardOfTheDay() {
+  const STORAGE_KEY = 'cardOfTheDayData';
+  const today = new Date().toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
+
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+  if (data && data.date === today) {
+    // Se já foi sorteada hoje, encontra a carta no baralho
+    return window.cartas.find(c => c.numero === data.cardNumber);
+  } else {
+    // Sorteia uma nova carta
+    const randomIndex = Math.floor(Math.random() * window.cartas.length);
+    const newCard = window.cartas[randomIndex];
+    
+    // Salva a nova carta e a data no localStorage
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      date: today,
+      cardNumber: newCard.numero
+    }));
+    
+    return newCard;
+  }
+}
+
+/**
+ * Exibe a carta do dia em um modal.
+ */
+function showCardOfTheDay() {
+  const modal = document.getElementById('card-of-the-day-modal');
+  const container = document.getElementById('card-of-the-day-container');
+  
+  const card = getCardOfTheDay();
+  
+  if (card && container && modal) {
+    container.innerHTML = cardHTML(card);
+    modal.classList.add('show');
+  }
+}
+
+/*
+========================================
+  MODO ESCURO (DARK MODE)
+========================================
+*/
+
+/**
+ * Inicializa a funcionalidade de modo escuro.
+ * Verifica a preferência do usuário no localStorage e adiciona o evento de clique.
+ */
+function initDarkMode() {
+  const toggleButton = document.getElementById('dark-mode-toggle');
+  const body = document.body;
+  const storageKey = 'darkModeEnabled';
+
+  // Aplica o modo escuro se estiver salvo no localStorage
+  if (JSON.parse(localStorage.getItem(storageKey))) {
+    body.classList.add('dark-mode');
+  }
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    // Salva a preferência no localStorage
+    localStorage.setItem(storageKey, body.classList.contains('dark-mode'));
+  });
+}
+
+
+/*
+========================================
   PONTO DE ENTRADA (ENTRY POINT)
 ========================================
 */
 
 // Executa quando o DOM está totalmente carregado.
 document.addEventListener('DOMContentLoaded', () => {
+  // Inicializa o modo escuro em todas as páginas
+  initDarkMode();
+
   // Verifica se está na página de lançamento procurando pelo modal.
   if (document.getElementById('category-modal')) {
     initLaunchPage();
+  }
+
+  // Verifica se está na página inicial procurando pelo botão da carta do dia.
+  const cardOfTheDayBtn = document.getElementById('card-of-the-day-btn');
+  if (cardOfTheDayBtn) {
+    cardOfTheDayBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showCardOfTheDay();
+    });
+
+    // Lógica para fechar o modal
+    const modal = document.getElementById('card-of-the-day-modal');
+    const closeBtn = modal.querySelector('.close-button');
+    
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
   }
 });
 

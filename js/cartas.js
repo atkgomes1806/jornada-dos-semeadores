@@ -5,7 +5,7 @@ const cartas = [
     nome: "O Galo",
     descricao: "Símbolo de vigilância e anúncio de novos ciclos. Representa coragem e a força para iniciar algo novo.",
     caracteristicas: "Observador, altivo, confiante.",
-    imagem: "img/01. galo.jpeg",
+    imagem: "assets/img/01. galo.jpeg",
     virtudes: "Liderança, iniciativa, alerta.",
     sombras: "Arrogância, impaciência, teimosia."
   },
@@ -14,7 +14,7 @@ const cartas = [
     nome: "A Galinha",
     descricao: "Representa cuidado, proteção e fertilidade. Energia materna e acolhimento.",
     caracteristicas: "Protetora, paciente, dedicada.",
-    imagem: "img/02. galinha.jpeg",
+    imagem: "assets/img/02. galinha.jpeg",
     virtudes: "Cuidado, nutrição, segurança.",
     sombras: "Medo excessivo, acomodação, superproteção."
   },
@@ -23,7 +23,7 @@ const cartas = [
     nome: "A Formiga",
     descricao: "Simboliza disciplina, organização e trabalho em equipe.",
     caracteristicas: "Persistente, metódica, colaborativa.",
-    imagem: "img/03. formiga.jpeg",
+    imagem: "assets/img/03. formiga.jpeg",
     virtudes: "Planejamento, resiliência, união.",
     sombras: "Rigidez, excesso de rotina, submissão."
   },
@@ -32,7 +32,7 @@ const cartas = [
     nome: "O Coco",
     descricao: "Representa proteção e o valor oculto que existe no interior.",
     caracteristicas: "Resistente, nutritivo, versátil.",
-    imagem: "img/04. côco.jpeg",
+    imagem: "assets/img/04. côco.jpeg",
     virtudes: "Força interna, resistência, recursos escondidos.",
     sombras: "Dureza excessiva, isolamento, dificuldade de abrir-se."
   },
@@ -41,7 +41,7 @@ const cartas = [
     nome: "O Sol",
     descricao: "Símbolo de clareza, vitalidade e sucesso.",
     caracteristicas: "Brilhante, expansivo, energético.",
-    imagem: "img/05. sol.jpeg",
+    imagem: "assets/img/05. sol.jpeg",
     virtudes: "Iluminação, crescimento, alegria.",
     sombras: "Exposição excessiva, arrogância, esgotamento."
   },
@@ -50,7 +50,7 @@ const cartas = [
     nome: "A Aranha",
     descricao: "Criatividade e paciência, tecendo o próprio destino.",
     caracteristicas: "Estrategista, criadora, resiliente.",
-    imagem: "img/06. aranha.jpeg",
+    imagem: "assets/img/06. aranha.jpeg",
     virtudes: "Planejamento, habilidade, autossuficiência.",
     sombras: "Manipulação, isolamento, espera excessiva."
   },
@@ -59,7 +59,7 @@ const cartas = [
     nome: "O Violão",
     descricao: "Harmonia, expressão e sensibilidade artística.",
     caracteristicas: "Criativo, sensível, comunicativo.",
-    imagem: "img/07. violao.jpeg",
+    imagem: "assets/img/07. violao.jpeg",
     virtudes: "Inspiração, conexão emocional, beleza.",
     sombras: "Melancolia, idealização, fuga da realidade."
   },
@@ -68,7 +68,7 @@ const cartas = [
     nome: "O Elefante",
     descricao: "Força, memória e sabedoria ancestral.",
     caracteristicas: "Paciente, protetor, respeitado.",
-    imagem: "img/08. elefante.jpeg",
+    imagem: "assets/img/08. elefante.jpeg",
     virtudes: "Resiliência, lealdade, estabilidade.",
     sombras: "Lentidão, apego excessivo ao passado, teimosia."
   },
@@ -77,7 +77,7 @@ const cartas = [
     nome: "O Cachorro",
     descricao: "Fidelidade, lealdade e parceria incondicional.",
     caracteristicas: "Companheiro, confiável, protetor.",
-    imagem: "img/09. cachorro.jpeg",
+    imagem: "assets/img/09. cachorro.jpeg",
     virtudes: "Amizade, confiança, proteção.",
     sombras: "Dependência, ciúme, submissão."
   },
@@ -86,7 +86,7 @@ const cartas = [
     nome: "O Gato",
     descricao: "Independência, mistério e instinto.",
     caracteristicas: "Ágil, enigmático, seletivo.",
-    imagem: "img/10. gato.jpeg",
+    imagem: "assets/img/10. gato.jpeg",
     virtudes: "Autonomia, intuição, charme.",
     sombras: "Desapego excessivo, imprevisibilidade, egocentrismo."
   },
@@ -95,7 +95,7 @@ const cartas = [
     nome: "O Dragão",
     descricao: "Força mítica, proteção e poder de transformação.",
     caracteristicas: "Poderoso, imponente, místico.",
-    imagem: "img/11. dragão.jpeg",
+    imagem: "assets/img/11. dragão.jpeg",
     virtudes: "Energia vital, coragem, liderança.",
     sombras: "Orgulho, dominação, destruição."
   },
@@ -104,7 +104,7 @@ const cartas = [
     nome: "A Lua",
     descricao: "Mistério, intuição e ilusões.",
     caracteristicas: "Sensível, introspectiva, enigmática.",
-    imagem: "img/12. lua.jpeg",
+    imagem: "assets/img/12. lua.jpeg",
     virtudes: "Imaginação, espiritualidade, sensibilidade.",
     sombras: "Confusão, engano, incerteza."
   },
@@ -113,7 +113,7 @@ const cartas = [
     nome: "A Árvore",
     descricao: "Raízes firmes, crescimento e estabilidade.",
     caracteristicas: "Estável, nutridora, resistente.",
-    imagem: "img/13. árvore.jpeg",
+    imagem: "assets/img/13. árvore.jpeg",
     virtudes: "Segurança, prosperidade, equilíbrio.",
     sombras: "Rigidez, estagnação, apego excessivo."
   },
@@ -122,7 +122,7 @@ const cartas = [
     nome: "Espada Flamejante",
     descricao: "Força decisiva e energia ardente.",
     caracteristicas: "Determinada, impetuosa, destrutiva.",
-    imagem: "img/14. flamejante.jpeg",
+    imagem: "assets/img/14. flamejante.jpeg",
     virtudes: "Coragem, ação, justiça.",
     sombras: "Impulsividade, violência, intolerância."
   },
@@ -131,7 +131,7 @@ const cartas = [
     nome: "Espada Congelada",
     descricao: "Clareza racional e distanciamento emocional.",
     caracteristicas: "Fria, analítica, calculista.",
-    imagem: "img/15. congelada.jpeg",
+    imagem: "assets/img/15. congelada.jpeg",
     virtudes: "Lógica, estratégia, foco.",
     sombras: "Frieza, inflexibilidade, dureza."
   },
@@ -140,7 +140,7 @@ const cartas = [
     nome: "Tartaruga",
     descricao: "Paciência e perseverança ao longo do tempo.",
     caracteristicas: "Lenta, constante, resiliente.",
-    imagem: "img/16. tartaruga.jpeg",
+    imagem: "assets/img/16. tartaruga.jpeg",
     virtudes: "Estabilidade, resistência, prudência.",
     sombras: "Lentidão excessiva, apego ao passado."
   },
@@ -149,7 +149,7 @@ const cartas = [
     nome: "Coruja",
     descricao: "Sabedoria e percepção profunda.",
     caracteristicas: "Observadora, intuitiva, atenta.",
-    imagem: "img/17. coruja.jpeg",
+    imagem: "assets/img/17. coruja.jpeg",
     virtudes: "Conhecimento, discernimento, visão ampla.",
     sombras: "Isolamento, frieza, desconfiança."
   },
@@ -158,7 +158,7 @@ const cartas = [
     nome: "Chave",
     descricao: "Acesso, revelação e solução de mistérios.",
     caracteristicas: "Útil, decisiva, transformadora.",
-    imagem: "img/18. chave.jpeg",
+    imagem: "assets/img/18. chave.jpeg",
     virtudes: "Descobertas, soluções, abertura.",
     sombras: "Segredos perigosos, decisões precipitadas."
   },
@@ -167,7 +167,7 @@ const cartas = [
     nome: "Relógio",
     descricao: "Ciclos, tempo e urgência.",
     caracteristicas: "Preciso, inevitável, rítmico.",
-    imagem: "img/19. relogio.jpeg",
+    imagem: "assets/img/19. relogio.jpeg",
     virtudes: "Planejamento, pontualidade, ordem.",
     sombras: "Pressão, ansiedade, limitação."
   },
@@ -176,7 +176,7 @@ const cartas = [
     nome: "Escada",
     descricao: "Ascensão, progresso e superação de desafios.",
     caracteristicas: "Elevadora, estruturada, direcional.",
-    imagem: "img/20. escada.jpeg",
+    imagem: "assets/img/20. escada.jpeg",
     virtudes: "Crescimento, conquista, avanço.",
     sombras: "Medo de altura, risco de queda, pressa."
   },
@@ -185,7 +185,7 @@ const cartas = [
     nome: "Praia",
     descricao: "Harmonia entre terra e mar, relaxamento e transição.",
     caracteristicas: "Tranquila, mutável, expansiva.",
-    imagem: "img/21. praia.jpeg",
+    imagem: "assets/img/21. praia.jpeg",
     virtudes: "Paz, liberdade, descanso.",
     sombras: "Distração, instabilidade, fuga da realidade."
   },
@@ -194,7 +194,7 @@ const cartas = [
     nome: "Hamster",
     descricao: "Energia acumulada e hábitos repetitivos.",
     caracteristicas: "Ágil, curioso, persistente.",
-    imagem: "img/22. hamster.jpeg",
+    imagem: "assets/img/22. hamster.jpeg",
     virtudes: "Constância, determinação, foco.",
     sombras: "Rotina excessiva, ansiedade, impulsividade."
   },
@@ -203,7 +203,7 @@ const cartas = [
     nome: "Café",
     descricao: "Estímulo, energia e clareza mental.",
     caracteristicas: "Revigorante, quente, intenso.",
-    imagem: "img/23. café.jpeg",
+    imagem: "assets/img/23. café.jpeg",
     virtudes: "Produtividade, motivação, clareza.",
     sombras: "Ansiedade, pressa, vício."
   },
@@ -212,7 +212,7 @@ const cartas = [
     nome: "Bicicleta",
     descricao: "Movimento equilibrado e independência.",
     caracteristicas: "Leve, prática, adaptável.",
-    imagem: "img/24. bicicleta.jpeg",
+    imagem: "assets/img/24. bicicleta.jpeg",
     virtudes: "Liberdade, progresso, saúde.",
     sombras: "Instabilidade, esforço constante, vulnerabilidade."
   },
@@ -221,7 +221,7 @@ const cartas = [
     nome: "Smartphone",
     descricao: "Comunicação instantânea e acesso à informação.",
     caracteristicas: "Conectado, prático, versátil.",
-    imagem: "img/25. smartphone.jpeg",
+    imagem: "assets/img/25. smartphone.jpeg",
     virtudes: "Conexão, conhecimento, oportunidades.",
     sombras: "Distração, dependência, isolamento social."
   },
@@ -230,7 +230,7 @@ const cartas = [
     nome: "Lápis",
     descricao: "Criação e possibilidade de reescrever caminhos.",
     caracteristicas: "Versátil, frágil, criativo.",
-    imagem: "img/26. lápis.jpeg",
+    imagem: "assets/img/26. lápis.jpeg",
     virtudes: "Criatividade, aprendizado, flexibilidade.",
     sombras: "Insegurança, fragilidade, efemeridade."
   },
@@ -239,7 +239,7 @@ const cartas = [
     nome: "Garrafa de Vinho",
     descricao: "Celebração, maturidade e prazer refinado.",
     caracteristicas: "Envelhecida, marcante, intensa.",
-    imagem: "img/27. vinho.jpeg",
+    imagem: "assets/img/27. vinho.jpeg",
     virtudes: "Alegria, experiência, sabedoria.",
     sombras: "Excesso, nostalgia, escapismo."
   },
@@ -248,7 +248,7 @@ const cartas = [
     nome: "Escova de Dente",
     descricao: "Cuidado pessoal e manutenção diária.",
     caracteristicas: "Útil, higiênica, constante.",
-    imagem: "img/28. escova.jpeg",
+    imagem: "assets/img/28. escova.jpeg",
     virtudes: "Saúde, prevenção, disciplina.",
     sombras: "Rigidez, obsessão, repetição."
   },
@@ -257,7 +257,7 @@ const cartas = [
     nome: "Óculos",
     descricao: "Clareza e foco.",
     caracteristicas: "Preciso, revelador, direto.",
-    imagem: "img/29. oculos.jpeg",
+    imagem: "assets/img/29. oculos.jpeg",
     virtudes: "Visão clara, entendimento, foco.",
     sombras: "Dependência, limitação, visão restrita."
   },
@@ -266,7 +266,7 @@ const cartas = [
     nome: "Revólver",
     descricao: "Poder decisivo e risco imediato.",
     caracteristicas: "Rápido, letal, direto.",
-    imagem: "img/30. revolver.jpeg",
+    imagem: "assets/img/30. revolver.jpeg",
     virtudes: "Determinação, defesa, ação.",
     sombras: "Impulsividade, perigo, violência."
   },
@@ -275,7 +275,7 @@ const cartas = [
     nome: "Porco",
     descricao: "Representa abundância, prosperidade e satisfação material, mas também indulgência.",
     caracteristicas: "Prático, determinado, persistente.",
-    imagem: "img/31. porco.jpeg",
+    imagem: "assets/img/31. porco.jpeg",
     virtudes: "Prosperidade, persistência, gratidão.",
     sombras: "Preguiça, gula, materialismo."
   },
@@ -284,7 +284,7 @@ const cartas = [
     nome: "Maga",
     descricao: "Figura de sabedoria intuitiva, poder oculto e transformação mágica.",
     caracteristicas: "Misteriosa, criativa, espiritual.",
-    imagem: "img/32. maga.jpeg",
+    imagem: "assets/img/32. maga.jpeg",
     virtudes: "Conhecimento, intuição, poder pessoal.",
     sombras: "Manipulação, segredos, ilusão."
   },
@@ -293,7 +293,7 @@ const cartas = [
     nome: "Abacaxi",
     descricao: "Exuberância, hospitalidade e resistência protegida por espinhos.",
     caracteristicas: "Doce, vibrante, resiliente.",
-    imagem: "img/33. abacaxi.jpeg",
+    imagem: "assets/img/33. abacaxi.jpeg",
     virtudes: "Alegria, acolhimento, energia vital.",
     sombras: "Proteção excessiva, orgulho, isolamento."
   },
@@ -302,7 +302,7 @@ const cartas = [
     nome: "Tigre",
     descricao: "Força instintiva, liderança e intensidade.",
     caracteristicas: "Feroz, determinado, ágil.",
-    imagem: "img/34. tigre.jpeg",
+    imagem: "assets/img/34. tigre.jpeg",
     virtudes: "Coragem, proteção, determinação.",
     sombras: "Impulsividade, agressividade, dominação."
   },
@@ -311,7 +311,7 @@ const cartas = [
     nome: "Bode",
     descricao: "Resistência e desafio às adversidades.",
     caracteristicas: "Persistente, rústico, independente.",
-    imagem: "img/35. bode.jpeg",
+    imagem: "assets/img/35. bode.jpeg",
     virtudes: "Autossuficiência, resiliência, coragem.",
     sombras: "Teimosia, rebeldia, dureza emocional."
   },
@@ -320,6 +320,7 @@ const cartas = [
     nome: "Telefone",
     descricao: "Comunicação direta e ligação com outros mundos ou pessoas.",
     caracteristicas: "Conectivo, rápido, útil.",
+    imagem: "assets/img/36. telefone.jpeg",
     virtudes: "Comunicação, aproximação, clareza.",
     sombras: "Mal-entendidos, interrupções, excesso de informações."
   },
@@ -328,6 +329,7 @@ const cartas = [
     nome: "Tubarão",
     descricao: "Instinto predador, foco e sobrevivência.",
     caracteristicas: "Determinado, agressivo, rápido.",
+    imagem: "assets/img/37. tubarao.jpeg",
     virtudes: "Determinação, foco, poder.",
     sombras: "Impiedade, agressividade, egoísmo."
   },
@@ -336,6 +338,7 @@ const cartas = [
     nome: "Coroa",
     descricao: "Autoridade, liderança e reconhecimento.",
     caracteristicas: "Respeitada, imponente, valiosa.",
+    imagem: "assets/img/38. coroa.jpeg",
     virtudes: "Prestígio, poder, confiança.",
     sombras: "Arrogância, autoritarismo, isolamento."
   },
@@ -344,6 +347,7 @@ const cartas = [
     nome: "Girassol",
     descricao: "Luz, positividade e busca por energia.",
     caracteristicas: "Alegre, expansivo, fiel ao propósito.",
+    imagem: "assets/img/39. girassol.jpeg",
     virtudes: "Felicidade, vitalidade, esperança.",
     sombras: "Dependência, ilusão, ingenuidade."
   },
@@ -352,6 +356,7 @@ const cartas = [
     nome: "Porta",
     descricao: "Abertura para novas oportunidades e transições.",
     caracteristicas: "Simbólica, transformadora, versátil.",
+    imagem: "assets/img/40. porta.jpeg",
     virtudes: "Novos começos, descobertas, passagem.",
     sombras: "Incerteza, medo do desconhecido, oportunidades perdidas."
   },
@@ -360,6 +365,7 @@ const cartas = [
     nome: "Sapo Marrom",
     descricao: "Transformação ligada à terra e à adaptação.",
     caracteristicas: "Discreto, adaptável, resistente.",
+    imagem: "assets/img/41. sapo.jpeg",
     virtudes: "Adaptação, renovação, paciência.",
     sombras: "Estagnação, preguiça, falta de ambição."
   },
@@ -368,6 +374,7 @@ const cartas = [
     nome: "Coronavírus",
     descricao: "Crise, transformação forçada e quebra de padrões.",
     caracteristicas: "Disruptivo, impactante, imprevisível.",
+    imagem: "assets/img/42. coronavirus.jpeg",
     virtudes: "Mudança necessária, reinvenção, resiliência.",
     sombras: "Medo, isolamento, perda."
   },
@@ -376,6 +383,7 @@ const cartas = [
     nome: "Dinossauro",
     descricao: "Força ancestral, ligação com o passado e resistência.",
     caracteristicas: "Gigante, imponente, primitivo.",
+    imagem: "assets/img/43. dinossauro.jpeg",
     virtudes: "Força, experiência, sobrevivência.",
     sombras: "Obsolescência, rigidez, destruição."
   },
@@ -384,6 +392,7 @@ const cartas = [
     nome: "Macaco",
     descricao: "Inteligência, curiosidade e adaptação.",
     caracteristicas: "Brincalhão, ágil, criativo.",
+    imagem: "assets/img/44. macaco.jpeg",
     virtudes: "Inovação, flexibilidade, alegria.",
     sombras: "Inconstância, dispersão, travessura excessiva."
   },
@@ -392,6 +401,7 @@ const cartas = [
     nome: "Raccoon (Guaxinim)",
     descricao: "Astúcia, adaptabilidade e trabalho noturno.",
     caracteristicas: "Observador, ágil, engenhoso.",
+    imagem: "assets/img/45. raccoon.jpeg",
     virtudes: "Inteligência, sobrevivência, curiosidade.",
     sombras: "Engano, oportunismo, desconfiança."
   },
@@ -400,6 +410,7 @@ const cartas = [
     nome: "Hiena",
     descricao: "Sobrevivência em ambientes hostis e aproveitamento de recursos.",
     caracteristicas: "Astuta, resiliente, social.",
+    imagem: "assets/img/46. hiena.jpeg",
     virtudes: "Resiliência, adaptabilidade, coragem.",
     sombras: "Cinismo, oportunismo, comportamento predatório."
   },
@@ -408,6 +419,7 @@ const cartas = [
     nome: "Uva Vermelha",
     descricao: "Prazer, fartura e celebração.",
     caracteristicas: "Doce, vibrante, nutritiva.",
+    imagem: "assets/img/47. uva.jpeg",
     virtudes: "Alegria, abundância, união.",
     sombras: "Excesso, desperdício, preguiça."
   },
@@ -416,6 +428,7 @@ const cartas = [
     nome: "Maçã Vermelha",
     descricao: "Sedução, desejo e tentação.",
     caracteristicas: "Atraente, intensa, irresistível.",
+    imagem: "assets/img/48. maca.jpeg",
     virtudes: "Amor, inspiração, prazer.",
     sombras: "Engano, perigo oculto, vaidade."
   },
@@ -424,6 +437,7 @@ const cartas = [
     nome: "Jumento",
     descricao: "Resistência e humildade diante de desafios.",
     caracteristicas: "Forte, paciente, persistente.",
+    imagem: "assets/img/49. jumento.jpeg",
     virtudes: "Trabalho árduo, lealdade, resiliência.",
     sombras: "Teimosia, lentidão, inflexibilidade."
   }
