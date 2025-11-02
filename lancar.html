@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sua Leitura de Cartas</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Tela de Carregamento/Mentalização -->
+  <div id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-message">agora, feche os olhos, respire fundo e mentalize!</p>
+  </div>
+
+  <div id="category-modal" class="modal">
+    <div class="modal-content">
+      <h2>Escolha até 3 áreas para sua leitura:</h2>
+      <form id="category-form">
+        <div class="category-grid">
+          <label><input type="checkbox" name="categoria" value="Autoconhecimento"> Autoconhecimento</label>
+          <label><input type="checkbox" name="categoria" value="Saúde"> Saúde</label>
+          <label><input type="checkbox" name="categoria" value="Amor"> Amor</label>
+          <label><input type="checkbox" name="categoria" value="Amizades"> Amizades</label>
+          <label><input type="checkbox" name="categoria" value="Família"> Família</label>
+          <label><input type="checkbox" name="categoria" value="Trabalho"> Trabalho</label>
+          <label><input type="checkbox" name="categoria" value="Dinheiro"> Dinheiro</label>
+          <label><input type="checkbox" name="categoria" value="Decisões"> Decisões</label>
+        </div>
+        <button type="submit" id="start-draw-btn">Sortear Cartas</button>
+      </form>
+    </div>
+  </div>
+
+  <a href="index.html" class="home-link" aria-label="Voltar ao início">
+    <span class="home-icon">🏠</span>
+  </a>
+  <h1 class="page-title">Sua Leitura de Cartas</h1>
+  <div id="container"></div>
+
+  <div class="bottom-nav">
+    <a href="index.html"><button>Voltar ao início</button></a>
+    <a href="todas.html"><button>Ver todas as cartas</button></a>
+  </div>
+  
+  <script src="cartas.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
