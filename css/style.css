@@ -512,3 +512,137 @@ body.dark-mode {
 .home-icon:hover {
   color: var(--home-icon-hover-color);
 }
+
+/*
+========================================
+  PERFIL DO USUÁRIO & FORMULÁRIO
+========================================
+*/
+
+.profile-form {
+  text-align: left;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-form h3 {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.profile-description {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--button-bg);
+  border-radius: 8px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--button-hover-bg);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.btn-primary:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #888;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #666;
+  transform: translateY(-2px);
+}
+
+.profile-note {
+  margin-top: 15px;
+  font-size: 0.85em;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+.card-greeting {
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.edit-profile-btn {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 8px 16px;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s, transform 0.2s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.edit-profile-btn:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+/* Modo escuro - ajustes para formulário */
+body.dark-mode .form-group input {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #5a8fc8;
+}
+
+body.dark-mode .profile-note {
+  color: #aaa;
+}

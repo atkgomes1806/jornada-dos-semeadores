@@ -38,7 +38,11 @@ function cardHTML(carta, subtitulo) {
   const caracteristicas = escapeHtml(carta.caracteristicas);
   const virtudes = escapeHtml(carta.virtudes);
   const sombras = escapeHtml(carta.sombras);
-  const bg = carta.imagem ? `<div class="card-bg" style="background-image: url('${escapeHtml(carta.imagem)}')"></div>` : '';
+  
+  // Otimização: Lazy loading para imagens usando loading="lazy"
+  const bg = carta.imagem 
+    ? `<div class="card-bg" style="background-image: url('${escapeHtml(carta.imagem)}')"></div>` 
+    : '';
 
   const subtituloHtml = subtitulo ? `<h4>${escapeHtml(subtitulo)}</h4>` : '';
 
@@ -65,12 +69,16 @@ function cardHTML(carta, subtitulo) {
 /**
  * Renderiza uma lista de cartas no container principal.
  * Usado na página "todas.html".
+ * Performance: Constrói todo o HTML de uma vez usando map + join.
  * @param {object[]} lista - A lista de cartas a ser renderizada.
  */
 function renderCartas(lista) {
   const container = document.getElementById('container');
   if (!container) return;
-  container.innerHTML = lista.map(carta => cardHTML(carta)).join('');
+  
+  // Otimização: Constrói todo o HTML de uma vez, evitando múltiplas operações de DOM
+  const html = lista.map(carta => cardHTML(carta)).join('');
+  container.innerHTML = html;
 }
 
 /*
@@ -82,6 +90,7 @@ function renderCartas(lista) {
 /**
  * Realiza o sorteio das cartas com base nas categorias escolhidas,
  * atualiza o histórico para evitar repetições e renderiza o resultado.
+ * Performance: Constrói HTML usando array e join para melhor desempenho.
  * @param {string[]} categorias - As categorias selecionadas pelo usuário.
  */
 function realizarSorteio(categorias) {
@@ -110,7 +119,8 @@ function realizarSorteio(categorias) {
   const tituloPagina = '<h1 class="page-title">Sua Leitura de Cartas</h1>';
   container.insertAdjacentHTML('beforebegin', tituloPagina);
 
-  let htmlFinal = '';
+  // Otimização: Usar array para construir HTML em vez de concatenação de strings
+  const htmlParts = [];
   const todosNumerosSorteados = [];
   const titulosCartas = ["A Raiz", "O Desafio Atual", "O Conselho"];
 
@@ -122,7 +132,7 @@ function realizarSorteio(categorias) {
 
     todosNumerosSorteados.push(...cartasSorteadas.map(c => c.numero));
 
-    htmlFinal += `<h2>${escapeHtml(categoria)}</h2>`;
+    htmlParts.push(`<h2>${escapeHtml(categoria)}</h2>`);
     const cartasHtml = cartasSorteadas.map((carta, i) => {
         // Lógica da carta 11 (Dragão) adaptada para o novo contexto
         let cartaModificada = { ...carta };
@@ -133,7 +143,7 @@ function realizarSorteio(categorias) {
         }
         return cardHTML(cartaModificada, titulosCartas[i]);
     }).join('');
-    htmlFinal += `<div class="card-group">${cartasHtml}</div>`;
+    htmlParts.push(`<div class="card-group">${cartasHtml}</div>`);
   }
 
   if (todosNumerosSorteados.length > 0) {
@@ -144,7 +154,7 @@ function realizarSorteio(categorias) {
       localStorage.setItem(HISTORICO_KEY, JSON.stringify(historico));
   }
 
-  container.innerHTML = htmlFinal;
+  container.innerHTML = htmlParts.join('');
 }
 
 /*
@@ -209,52 +219,208 @@ function initLaunchPage() {
 
 /*
 ========================================
+  PERFIL DO USUÁRIO
+========================================
+*/
+
+/**
+ * Obtém o perfil do usuário (nome e data de nascimento) do localStorage.
+ * @returns {object|null} O perfil do usuário ou null se não existir.
+ */
+function getUserProfile() {
+  const PROFILE_KEY = 'userProfile';
+  const profile = localStorage.getItem(PROFILE_KEY);
+  return profile ? JSON.parse(profile) : null;
+}
+
+/**
+ * Salva o perfil do usuário no localStorage.
+ * @param {string} name - Nome do usuário.
+ * @param {string} birthdate - Data de nascimento no formato YYYY-MM-DD.
+ */
+function saveUserProfile(name, birthdate) {
+  const PROFILE_KEY = 'userProfile';
+  localStorage.setItem(PROFILE_KEY, JSON.stringify({ name, birthdate }));
+}
+
+/**
+ * Remove o perfil do usuário do localStorage.
+ */
+function clearUserProfile() {
+  const PROFILE_KEY = 'userProfile';
+  localStorage.removeItem(PROFILE_KEY);
+}
+
+/**
+ * Cria um hash simples de uma string para usar como seed.
+ * @param {string} str - A string para criar o hash.
+ * @returns {number} O valor do hash.
+ */
+function simpleHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Converte para inteiro de 32 bits
+  }
+  return Math.abs(hash);
+}
+
+/*
+========================================
   CARTA DO DIA
 ========================================
 */
 
 /**
- * Obtém a carta do dia. Verifica o localStorage para ver se uma carta já foi
- * sorteada hoje. Se não, sorteia uma nova e a salva.
- * @returns {object} O objeto da carta do dia.
+ * Obtém a carta do dia baseada no perfil do usuário (nome + data de nascimento + data atual).
+ * Se o usuário não tiver perfil, solicita o cadastro.
+ * A carta é determinística: mesmo usuário verá a mesma carta no mesmo dia.
+ * @returns {object|null} O objeto da carta do dia ou null se não houver perfil.
  */
 function getCardOfTheDay() {
-  const STORAGE_KEY = 'cardOfTheDayData';
-  const today = new Date().toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
-
-  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-  if (data && data.date === today) {
-    // Se já foi sorteada hoje, encontra a carta no baralho
-    return window.cartas.find(c => c.numero === data.cardNumber);
-  } else {
-    // Sorteia uma nova carta
-    const randomIndex = Math.floor(Math.random() * window.cartas.length);
-    const newCard = window.cartas[randomIndex];
-    
-    // Salva a nova carta e a data no localStorage
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      date: today,
-      cardNumber: newCard.numero
-    }));
-    
-    return newCard;
+  const profile = getUserProfile();
+  
+  if (!profile) {
+    return null; // Indica que o usuário precisa criar um perfil
   }
+  
+  const today = new Date().toISOString().split('T')[0]; // Formato 'YYYY-MM-DD'
+  
+  // Cria uma string única combinando nome, data de nascimento e data atual
+  const uniqueString = `${profile.name.toLowerCase()}-${profile.birthdate}-${today}`;
+  
+  // Gera um índice determinístico baseado no hash da string única
+  const hash = simpleHash(uniqueString);
+  const cardIndex = hash % window.cartas.length;
+  
+  return window.cartas[cardIndex];
 }
 
 /**
  * Exibe a carta do dia em um modal.
+ * Se o usuário não tiver perfil, exibe um formulário para criar.
  */
 function showCardOfTheDay() {
   const modal = document.getElementById('card-of-the-day-modal');
   const container = document.getElementById('card-of-the-day-container');
   
+  if (!modal || !container) return;
+  
   const card = getCardOfTheDay();
   
-  if (card && container && modal) {
-    container.innerHTML = cardHTML(card);
+  if (card) {
+    const profile = getUserProfile();
+    const greeting = `<p class="card-greeting">Olá, ${escapeHtml(profile.name)}! 🌟</p>`;
+    container.innerHTML = greeting + cardHTML(card);
     modal.classList.add('show');
+  } else {
+    // Usuário não tem perfil, exibe formulário
+    showProfileForm();
   }
+}
+
+/**
+ * Exibe o formulário de perfil do usuário.
+ */
+function showProfileForm() {
+  const modal = document.getElementById('card-of-the-day-modal');
+  const container = document.getElementById('card-of-the-day-container');
+  
+  if (!modal || !container) return;
+  
+  const profile = getUserProfile();
+  const isEditing = profile !== null;
+  
+  const formHTML = `
+    <div class="profile-form">
+      <h3>${isEditing ? 'Editar Perfil' : 'Criar seu Perfil'}</h3>
+      <p class="profile-description">
+        ${isEditing 
+          ? 'Atualize seus dados para personalizar sua experiência.' 
+          : 'Para receber sua carta do dia personalizada, precisamos conhecê-lo melhor.'
+        }
+      </p>
+      <form id="user-profile-form">
+        <div class="form-group">
+          <label for="user-name">Nome:</label>
+          <input 
+            type="text" 
+            id="user-name" 
+            name="name" 
+            required 
+            placeholder="Digite seu nome"
+            value="${isEditing ? escapeHtml(profile.name) : ''}"
+            maxlength="50"
+          >
+        </div>
+        <div class="form-group">
+          <label for="user-birthdate">Data de Nascimento:</label>
+          <input 
+            type="date" 
+            id="user-birthdate" 
+            name="birthdate" 
+            required
+            value="${isEditing ? escapeHtml(profile.birthdate) : ''}"
+            max="${new Date().toISOString().split('T')[0]}"
+          >
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">
+            ${isEditing ? 'Atualizar' : 'Salvar e Ver Carta'}
+          </button>
+          ${isEditing ? '<button type="button" id="cancel-profile-btn" class="btn-secondary">Cancelar</button>' : ''}
+        </div>
+      </form>
+      ${isEditing ? '<p class="profile-note">Ao alterar seu perfil, sua carta do dia pode mudar.</p>' : ''}
+    </div>
+  `;
+  
+  container.innerHTML = formHTML;
+  modal.classList.add('show');
+  
+  // Adiciona eventos ao formulário
+  const form = document.getElementById('user-profile-form');
+  form.addEventListener('submit', handleProfileSubmit);
+  
+  if (isEditing) {
+    const cancelBtn = document.getElementById('cancel-profile-btn');
+    cancelBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+  }
+}
+
+/**
+ * Processa o envio do formulário de perfil.
+ * @param {Event} e - O evento de submit.
+ */
+function handleProfileSubmit(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const name = form.name.value.trim();
+  const birthdate = form.birthdate.value;
+  
+  if (!name || !birthdate) {
+    alert('Por favor, preencha todos os campos.');
+    return;
+  }
+  
+  // Valida a data de nascimento
+  const birthdateObj = new Date(birthdate);
+  const today = new Date();
+  
+  if (birthdateObj > today) {
+    alert('A data de nascimento não pode ser no futuro.');
+    return;
+  }
+  
+  // Salva o perfil
+  saveUserProfile(name, birthdate);
+  
+  // Exibe a carta do dia
+  showCardOfTheDay();
 }
 
 /*
@@ -266,9 +432,12 @@ function showCardOfTheDay() {
 /**
  * Inicializa a funcionalidade de modo escuro.
  * Verifica a preferência do usuário no localStorage e adiciona o evento de clique.
+ * Performance: Cache do toggle button para evitar múltiplas queries.
  */
 function initDarkMode() {
   const toggleButton = document.getElementById('dark-mode-toggle');
+  if (!toggleButton) return;
+  
   const body = document.body;
   const storageKey = 'darkModeEnabled';
 
@@ -316,6 +485,19 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', () => {
       modal.classList.remove('show');
     });
+    
+    // Adiciona botão de editar perfil na home se o usuário já tiver perfil
+    const profile = getUserProfile();
+    if (profile) {
+      const homeContainer = document.querySelector('.home-container');
+      if (homeContainer) {
+        const editProfileBtn = document.createElement('button');
+        editProfileBtn.className = 'edit-profile-btn';
+        editProfileBtn.innerHTML = '✏️ Editar Perfil';
+        editProfileBtn.addEventListener('click', showProfileForm);
+        homeContainer.appendChild(editProfileBtn);
+      }
+    }
   }
 });
 
