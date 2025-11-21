@@ -1,0 +1,64 @@
+/* base.css - Variáveis e Reset */
+:root {
+  --bg-color: #f0f4f8;
+  --text-color: #4a6fa5;
+  --text-color-strong: #3a5f8a;
+  --button-bg: #4a6fa5;
+  --button-hover-bg: #3a5f8a;
+  --button-text: #ffffff;
+  --card-bg: #ffffff;
+  --card-back-bg: #f9f9f9;
+  --card-text: #333;
+  --modal-bg: #fefefe;
+  --modal-overlay: rgba(0,0,0,0.5);
+  --home-container-bg: rgba(255, 255, 255, 0.85);
+  --bottom-nav-bg: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(0,0,0,0.1);
+  --card-shadow-color: rgba(0,0,0,0.2);
+  --home-icon-color: #4a6fa5;
+  --home-icon-hover-color: #3a5f8a;
+  --loading-bg: rgba(240, 244, 248, 0.95);
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 20px 20px 100px 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+h1, h2 { color: var(--text-color); }
+
+h2 { margin-bottom: 10px; }
+
+button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover { background: var(--button-hover-bg); transform: translateY(-2px); }
+
+/* Modo escuro - variáveis override */
+body.dark-mode {
+  --bg-color: #1a202c;
+  --text-color: #a0aec0;
+  --text-color-strong: #e2e8f0;
+  --card-bg: #2d3748;
+  --card-back-bg: #4a5568;
+  --card-text: #e2e8f0;
+  --modal-bg: #2d3748;
+  --home-container-bg: rgba(45, 55, 72, 0.85);
+  --bottom-nav-bg: rgba(26, 32, 44, 0.9);
+  --loading-bg: rgba(26, 32, 44, 0.95);
+  --home-icon-color: #a0aec0;
+  --home-icon-hover-color: #e2e8f0;
+}

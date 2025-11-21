@@ -1,57 +1,46 @@
-tsParticles.load("tsparticles", {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 100,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    },
-    color: {
-      value: "#ffffff"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.5,
-      random: true,
-      anim: {
-        enable: true,
-        speed: 0.5,
-        opacity_min: 0.1,
-        sync: false
-      }
-    },
-    size: {
-      value: 2,
-      random: true,
-      anim: {
-        enable: false
-      }
-    },
-    move: {
-      enable: true,
-      speed: 0.3,
-      direction: "none",
-      random: true,
-      straight: false,
-      out_mode: "out",
-      bounce: false
-    }
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: {
-        enable: false
+// Função que carrega partículas com base no tema atual
+function loadParticles(darkMode) {
+  const color = darkMode ? "#a0aec0" : "#ffffff";
+  const opacityBase = darkMode ? 0.35 : 0.5;
+  tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    particles: {
+      number: {
+        value: 110,
+        density: { enable: true, value_area: 800 }
       },
-      onclick: {
-        enable: false
+      color: { value: color },
+      shape: { type: "circle" },
+      opacity: {
+        value: opacityBase,
+        random: true,
+        anim: { enable: true, speed: 0.4, opacity_min: 0.08, sync: false }
       },
-      resize: true
-    }
-  },
-  detectRetina: true
+      size: { value: 2, random: true },
+      move: {
+        enable: true,
+        speed: darkMode ? 0.25 : 0.3,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "out",
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
+    },
+    detectRetina: true
+  });
+}
+
+// Carrega inicialmente considerando estado salvo
+document.addEventListener('DOMContentLoaded', () => {
+  loadParticles(document.body.classList.contains('dark-mode'));
 });
+
+// Expor função global para reinicialização após toggle
+window.reinitParticles = () => {
+  loadParticles(document.body.classList.contains('dark-mode'));
+};

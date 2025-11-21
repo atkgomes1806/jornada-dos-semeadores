@@ -450,6 +450,10 @@ function initDarkMode() {
     body.classList.toggle('dark-mode');
     // Salva a preferência no localStorage
     localStorage.setItem(storageKey, body.classList.contains('dark-mode'));
+    // Reinicia partículas para refletir o modo
+    if (window.reinitParticles) {
+      window.reinitParticles();
+    }
   });
 }
 

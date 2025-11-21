@@ -1,0 +1,6 @@
+/* effects.css - Animações gerais e estados */
+
+/* Spinner (já referenciado em components) mantido para clareza se reutilizar */
+@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+
+/* Reuso potencial de animações adicionais pode ser adicionado aqui */

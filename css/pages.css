@@ -1,0 +1,10 @@
+/* pages.css - Estilos específicos de páginas */
+
+/* Home */
+body.home-page { background: radial-gradient(circle at 20% 30%, #e3f2fd, #f5f9ff, #dce8fa); background-size: 200% 200%; animation: gradientShift 20s ease infinite; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; overflow: hidden; }
+@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+#tsparticles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.home-container { position: relative; z-index: 1; background: var(--home-container-bg); padding: 30px 50px; border-radius: 15px; box-shadow: 0 8px 25px var(--shadow-color); border: 1px solid var(--home-container-bg); max-width: 800px; width: 100%; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); text-align: center; }
+.home-container p { font-size: 1.2em; margin-bottom: 30px; }
+.home-buttons .button-link { padding: 12px 25px; font-size: 1.1em; }
+body.home-page.dark-mode { background: radial-gradient(circle at 20% 30%, #1a202c, #1f2734, #10151d); background-size: 200% 200%; animation: gradientShift 25s ease infinite; }
