@@ -1,0 +1,56 @@
+/* skeleton.css - Skeleton loaders para carregamento de imagens */
+
+/* Skeleton Loading Animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Container do skeleton */
+.card-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 0%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 100%
+  );
+  background-size: 1000px 100%;
+  animation: skeleton-loading 2s infinite;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+/* Varianles de skeleton para o dark mode */
+body {
+  --skeleton-base: #e0e0e0;
+  --skeleton-highlight: #f0f0f0;
+}
+
+body.dark-mode {
+  --skeleton-base: #3a3a3a;
+  --skeleton-highlight: #4a4a4a;
+}
+
+/* Estado de carregamento - skeleton visível */
+.card-front.loading .card-skeleton {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Estado carregado - skeleton oculto */
+.card-front.loaded .card-skeleton {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Garantir que o background apareça quando carregado */
+.card-front.loaded .card-bg {
+  opacity: 0.25;
+}

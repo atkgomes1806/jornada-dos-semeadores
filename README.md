@@ -33,33 +33,45 @@ Cada carta contém:
 - **Animação de "flip" nas cartas** 🔄
 - **Leitura de cartas personalizada** baseada em categorias ✨
 - **Tela de mentalização** para uma experiência mais imersiva 🙏
+- **Modo escuro** para conforto visual 🌙
+- **Skeleton loader** enquanto as imagens das cartas carregam ⚡
+- **Responsividade** para dispositivos móveis 📱
 
 ---
 
 ## 🛠️ Tecnologias utilizadas
 - **HTML5**
-- **CSS3** (incluindo animações)
-- **JavaScript (ES6+)**
+- **CSS3** (incluindo animações e módulos CSS)
+- **JavaScript Vanilla (ES6+)**
 - **Responsividade** para dispositivos móveis
+- **100% cliente-side** — sem servidor necessário
 
 ---
 
 ## 📂 Estrutura de pastas
-📁 jornada-dos-semeadores
-
-┣ 📂 assets
-┃ ┗ 📂 img # Imagens das cartas
-┣ 📂 css
-┃ ┗ 📄 style.css # Folha de estilos principal
-┣ 📂 js
-┃ ┣ 📄 cartas.js # Banco de dados com todas as cartas
-┃ ┣ 📄 effects.js # Efeito de partículas da home
-┃ ┣ 📄 nav.js # Lógica da navegação dinâmica
-┃ ┗ 📄 script.js # Lógica principal do sorteio e renderização
-┣  index.html # Página inicial
-┣ 📄 lancar.html # Página da leitura de cartas
-┣ 📄 todas.html # Página que exibe todas as cartas
-┗ 📄 README.md # Documentação do projeto
+```
+📁 jornada-dos-semeadores/
+├── 📂 assets/
+│   └── 📂 img/           # Imagens das cartas
+├── 📂 css/               # Estilos modularizados
+│   ├── base.css          # Estilos base
+│   ├── components.css    # Componentes visuais
+│   ├── effects.css       # Efeitos visuais
+│   ├── pages.css         # Estilos por página
+│   ├── skeleton.css      # Skeleton loader
+│   ├── style.css         # Importa todos os CSS modulares
+│   ├── utilities.css     # Utilitários CSS
+│   └── variants.css      # Variantes de estilos
+├── 📂 js/
+│   ├── cartas.js         # Banco de dados com 49 cartas
+│   ├── effects.js        # Efeito de partículas da home
+│   ├── nav.js            # Lógica da navegação dinâmica
+│   └── script.js         # Lógica principal do sorteio, renderização e carregamento
+├── 📄 index.html         # Página inicial
+├── 📄 lancar.html        # Página da leitura de cartas
+├── 📄 todas.html         # Página que exibe todas as cartas
+└── 📄 README.md          # Documentação do projeto
+```
 
 ---
 
@@ -69,3 +81,41 @@ Cada carta contém:
    git clone https://github.com/atkgomes1806/jornada-dos-semeadores.git
    ```
 2. **Abra o arquivo `index.html`** em seu navegador de preferência.
+
+Alternativa com servidor local:
+   ```bash
+   cd jornada-dos-semeadores
+   python3 -m http.server 8000
+   # Acesse http://localhost:8000
+   ```
+
+---
+
+## ✨ Recursos Principais
+- **49 Cartas** — cada uma com descrição detalhada, virtudes e sombras
+- **Modo Escuro** — tema adaptável ao seu conforto visual
+- **Skeleton Loading** — animação de carregamento elegante enquanto as imagens da carta aparecem
+- **Histórico de Sorteios** — sistema que evita repetição nas últimas 2 leituras
+- **Perfil do Usuário** — salva nome e data de nascimento no navegador
+- **Persistência Local** — usa `localStorage` para manter dados sem necessidade de servidor
+- **Responsividade Total** — funciona perfeitamente em desktop, tablet e mobile
+
+---
+
+## 📝 Notas
+- O projeto utiliza **localStorage** para guardar o perfil do usuário e histórico de sorteios
+- Todas as cartas incluem imagens de fundo para um visual mais atrativo
+- O sistema de "virada" de cartas usa **CSS 3D Transform** para um efeito suave
+
+---
+
+## 🤝 Contribuições
+Sugestões e melhorias são bem-vindas! Sinta-se livre para:
+- Abrir issues
+- Enviar pull requests
+- Reportar bugs
+
+---
+
+## 📄 Licença
+Este projeto foi criado com ❤️ para a comunidade **Jornada dos Semeadores**.

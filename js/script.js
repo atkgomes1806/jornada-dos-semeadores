@@ -44,14 +44,18 @@ function cardHTML(carta, subtitulo) {
     ? `<div class="card-bg" style="background-image: url('${escapeHtml(carta.imagem)}')"></div>` 
     : '';
 
+  // Skeleton loader para indicar carregamento da imagem
+  const skeleton = carta.imagem ? `<div class="card-skeleton"></div>` : '';
+
   const subtituloHtml = subtitulo ? `<h4>${escapeHtml(subtitulo)}</h4>` : '';
 
   return `
     <div class="card">
       ${subtituloHtml}
       <div class="card-inner">
-        <div class="card-front">
+        <div class="card-front loading" data-imagem="${escapeHtml(carta.imagem || '')}">
           ${bg}
+          ${skeleton}
           <h2>${numero}</h2>
           <h3>${nome}</h3>
         </div>
@@ -79,6 +83,47 @@ function renderCartas(lista) {
   // Otimização: Constrói todo o HTML de uma vez, evitando múltiplas operações de DOM
   const html = lista.map(carta => cardHTML(carta)).join('');
   container.innerHTML = html;
+  
+  // Inicializa o monitoramento de carregamento de imagens
+  initImageLoading();
+}
+
+/**
+ * Monitora o carregamento de imagens de background das cartas.
+ * Remove o skeleton loader quando a imagem está pronta.
+ */
+function initImageLoading() {
+  const cardsComImagem = document.querySelectorAll('.card-front.loading');
+  
+  cardsComImagem.forEach(cardFront => {
+    const imagemUrl = cardFront.getAttribute('data-imagem');
+    
+    if (!imagemUrl) {
+      // Se não tiver imagem, remove o skeleton imediatamente
+      cardFront.classList.remove('loading');
+      cardFront.classList.add('loaded');
+      return;
+    }
+    
+    // Cria uma imagem temporária para verificar o carregamento
+    const img = new Image();
+    
+    img.onload = () => {
+      cardFront.classList.remove('loading');
+      cardFront.classList.add('loaded');
+    };
+    
+    img.onerror = () => {
+      // Em caso de erro, ainda remove o skeleton após timeout
+      setTimeout(() => {
+        cardFront.classList.remove('loading');
+        cardFront.classList.add('loaded');
+      }, 500);
+    };
+    
+    // Inicia o carregamento da imagem
+    img.src = imagemUrl;
+  });
 }
 
 /*
@@ -155,6 +200,9 @@ function realizarSorteio(categorias) {
   }
 
   container.innerHTML = htmlParts.join('');
+  
+  // Inicializa o monitoramento de carregamento de imagens
+  initImageLoading();
 }
 
 /*
@@ -314,6 +362,9 @@ function showCardOfTheDay() {
     const greeting = `<p class="card-greeting">Olá, ${escapeHtml(profile.name)}! 🌟</p>`;
     container.innerHTML = greeting + cardHTML(card);
     modal.classList.add('show');
+    
+    // Inicializa o monitoramento de carregamento de imagens
+    initImageLoading();
   } else {
     // Usuário não tem perfil, exibe formulário
     showProfileForm();
